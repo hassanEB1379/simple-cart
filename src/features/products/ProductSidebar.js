@@ -36,7 +36,7 @@ const ProductSidebar = () => {
                 <Link
                     key={index}
                     to={category.name}
-                    className="d-flex gap-3 px-0 mb-4 align-items-center fw-bold"
+                    className="d-flex gap-3 px-0 mb-4 align-items-center text-decoration-none fw-bold"
                 >
                     {category.icon}
                     <span className="d-none d-lg-block">{category.name}</span>
