@@ -22,7 +22,7 @@ const ProductCard = ({ data }) => {
     };
 
     return (
-        <Card className="shadow-sm" style={{ width: "15.6rem" }}>
+        <Card className="product-card">
             <Card.Img
                 style={{
                     height: 200,
@@ -39,7 +39,7 @@ const ProductCard = ({ data }) => {
                     {data.title}
                 </Card.Title>
 
-                <Card.Text>{data.price} $</Card.Text>
+                <Card.Text className="mb-5">{data.price} $</Card.Text>
 
                 <Counter
                     count={count}
@@ -47,7 +47,11 @@ const ProductCard = ({ data }) => {
                     decrement={decrement}
                 />
 
-                <Button variant="primary" onClick={handleAddToCart}>
+                <Button
+                    className="ms-3"
+                    variant="primary"
+                    onClick={handleAddToCart}
+                >
                     Add to cart
                 </Button>
             </Card.Body>

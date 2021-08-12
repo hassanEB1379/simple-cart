@@ -4,22 +4,25 @@ import ProductCard from "./ProductCard";
 import ProductSidebar from "./ProductSidebar";
 
 import { useSelector } from "react-redux";
-import { selectByCategory } from "./productSlice";
+import { fetchProducts, selectByCategory } from "./productSlice";
+import Fetch from "../../app/components/Fetch";
 
-const ProductList = () => {
-    const { error, status, data } = useSelector(selectByCategory);
+const ProductList = ({ match }) => {
+    const { category } = match.params;
+
+    const { error, status, data } = useSelector(selectByCategory(category));
 
     return (
         <Row>
-            <Col xs={2}>
+            <Col className="" xs={1} lg={2}>
                 <ProductSidebar />
             </Col>
 
-            <Col xs={10}>
-                <Row style={{ gap: 15 }}>
-                    {error && <p>{error}</p>}
+            <Col xs={11} lg={10}>
+                <Row>
+                    {error && <Fetch error refetch={fetchProducts} />}
 
-                    {status === "loading" && <p>is loading ...</p>}
+                    {status === "loading" && <Fetch />}
 
                     {data.map(product => (
                         <ProductCard key={product.id} data={product} />
