@@ -15,8 +15,8 @@ store.dispatch(fetchProducts());
 
 // persist state
 store.subscribe(() => {
-    const { auth } = store.getState();
-    saveStateLs({ auth });
+    const { user, cart, orders } = store.getState();
+    saveStateLs({ user, cart, orders });
 });
 
 ReactDOM.render(
