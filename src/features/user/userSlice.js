@@ -3,7 +3,7 @@ import { loginApi } from "../../api/api";
 import { getStateLs } from "../../utils/localStorage";
 
 // thunks
-export const loginThunk = createAsyncThunk("auth/login", async userData => {
+export const loginThunk = createAsyncThunk("user/login", async userData => {
     return await loginApi(userData);
 });
 
@@ -14,10 +14,10 @@ const stateTemplate = {
     data: {},
 };
 
-const initialState = getStateLs("auth") || stateTemplate;
+const initialState = getStateLs("user") || stateTemplate;
 
-const authSlice = createSlice({
-    name: "auth",
+const userSlice = createSlice({
+    name: "user",
     initialState,
     reducers: {
         logout: (state, _) => {
@@ -36,6 +36,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout } = userSlice.actions;
 
-export default authSlice.reducer;
+export default userSlice.reducer;
