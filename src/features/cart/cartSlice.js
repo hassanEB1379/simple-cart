@@ -1,8 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { getStateLs } from "../../utils/localStorage";
+
+const initialState = getStateLs("cart") || [];
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: [],
+    initialState,
     reducers: {
         addToCart: (state, action) => {
             const { id, count } = action.payload;
@@ -29,6 +32,20 @@ const cartSlice = createSlice({
         },
     },
 });
+
+// selectors
+export const selectTotalPurchases = createSelector(
+    state => state.cart,
+    cart => {
+        // Calculate the total price of the cart
+        let total = 0;
+        for (const cartItem of cart) {
+            const { price, count } = cartItem;
+            total += price * count;
+        }
+        return total;
+    }
+);
 
 export const {
     addToCart,
