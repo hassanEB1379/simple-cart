@@ -6,7 +6,7 @@ const Orders = () => {
 
     return (
         <Row>
-            <Col className="mx-auto" xs={8}>
+            <Col className="mx-auto" xs={12} md={10} lg={8}>
                 <h2 className="mb-5">My orders</h2>
 
                 {orders.map(order => (
