@@ -3,14 +3,14 @@ import { AiOutlineUser } from "react-icons/all";
 import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loginThunk } from "./authSlice";
+import { loginThunk } from "./userSlice";
 import Fetch from "../../app/components/Fetch";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const authStatus = useSelector(state => state.auth.status);
+    const authStatus = useSelector(state => state.user.status);
 
     const dispatch = useDispatch();
 
