@@ -30,7 +30,7 @@ const CartSidebar = () => {
     return (
         <div
             style={{ top: 100 }}
-            className="shadow p-3 rounded position-sticky"
+            className="shadow p-3 rounded position-md-sticky mb-5"
         >
             <h3 className="mb-5">
                 {cartData.length
