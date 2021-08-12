@@ -25,10 +25,14 @@ const productSlice = createSlice({
     extraReducers: {
         [fetchProducts.pending]: (state, _) => {
             state.status = "loading";
+            state.error = null;
         },
         [fetchProducts.fulfilled]: (state, action) => {
-            state.status = "success";
-            state.data = action.payload;
+            return {
+                status: "success",
+                error: null,
+                data: action.payload,
+            };
         },
         [fetchProducts.rejected]: (state, action) => {
             state.status = "failed";
@@ -38,20 +42,20 @@ const productSlice = createSlice({
 });
 
 // selectors
-export const selectByCategory = createSelector(
-    state => state.products,
-    state => state.filter.category,
-    (products, category) => {
-        console.log(category);
-        if (category === "all") return products;
+export const selectByCategory = category => {
+    return createSelector(
+        state => state.products,
+        products => {
+            if (category === "all") return products;
 
-        return {
-            ...products,
-            data: products.data.filter(
-                product => product.category === category
-            ),
-        };
-    }
-);
+            return {
+                ...products,
+                data: products.data.filter(
+                    product => product.category === category
+                ),
+            };
+        }
+    );
+};
 
 export default productSlice.reducer;
