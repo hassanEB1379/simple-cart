@@ -1,6 +1,6 @@
 import { Badge, Container, Nav, Navbar as BsNavbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import AccountDropdown from "../../features/auth/AccountDropdown";
+import AccountDropdown from "../../features/user/AccountDropdown";
 
 import { FiShoppingCart } from "react-icons/fi";
 
@@ -8,50 +8,59 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const itemCartLength = useSelector(state => state.cart.length);
-    const userAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const userAuthenticated = useSelector(state => state.user.isAuthenticated);
 
     return (
-        <BsNavbar sticky="top" bg="primary" variant="dark" expand="sm">
+        <BsNavbar
+            style={{ height: 60 }}
+            sticky="top"
+            bg="primary"
+            variant="dark"
+            expand="sm"
+        >
             <Container>
-                <BsNavbar.Toggle aria-controls="basic-navbar-nav" />
-                <BsNavbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link>
-                            <Link style={{ color: "inherit" }} to="/">
-                                Home
-                            </Link>
-                        </Nav.Link>
+                <Nav className="me-auto">
+                    <Nav.Item className="py-2">
+                        <Link
+                            className="text-white text-decoration-none"
+                            to="/all"
+                        >
+                            Home
+                        </Link>
+                    </Nav.Item>
 
-                        {/* show login button if user is not logged in */}
-                        {!userAuthenticated && (
-                            <Nav.Link>
-                                <Link style={{ color: "inherit" }} to="/auth">
-                                    Login
-                                </Link>
-                            </Nav.Link>
-                        )}
-                    </Nav>
-
-                    <Nav className="gap-3">
-                        {/*  show user account if user is logged in  */}
-                        {userAuthenticated && <AccountDropdown />}
-
-                        {/* cart */}
-                        <Nav.Item className="d-flex align-items-center">
-                            <Link className="position-relative" to="/cart">
-                                <FiShoppingCart color="#fff" size="1.5em" />
-                                <Badge
-                                    style={{ top: -10, right: -15 }}
-                                    className="position-absolute"
-                                    pill
-                                    bg="danger"
-                                >
-                                    {itemCartLength}
-                                </Badge>
+                    {/* show login button if user is not logged in */}
+                    {!userAuthenticated && (
+                        <Nav.Item className="py-2">
+                            <Link
+                                className="text-white text-decoration-none ms-3"
+                                to="/auth/login"
+                            >
+                                Login
                             </Link>
                         </Nav.Item>
-                    </Nav>
-                </BsNavbar.Collapse>
+                    )}
+                </Nav>
+
+                <Nav className="gap-3 flex-row ">
+                    {/*  show user account if user is logged in  */}
+                    {userAuthenticated && <AccountDropdown />}
+
+                    {/* cart */}
+                    <Nav.Item className="d-flex align-items-center me-2">
+                        <Link className="position-relative" to="/cart">
+                            <FiShoppingCart color="#fff" size="1.5em" />
+                            <Badge
+                                style={{ top: -10, right: -15 }}
+                                className="position-absolute"
+                                pill
+                                bg="danger"
+                            >
+                                {itemCartLength}
+                            </Badge>
+                        </Link>
+                    </Nav.Item>
+                </Nav>
             </Container>
         </BsNavbar>
     );

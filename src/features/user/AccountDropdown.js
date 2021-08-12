@@ -1,10 +1,12 @@
 import { NavDropdown, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { FiUser } from "react-icons/fi";
 
 import { useDispatch } from "react-redux";
-import { logout } from "./authSlice";
+import { logout } from "./userSlice";
+import { clearOrders } from "../orders/ordersSlice";
 
 const AccountDropdown = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -15,6 +17,7 @@ const AccountDropdown = () => {
     const handleCloseModal = () => setOpenModal(false);
 
     const handleLogout = () => {
+        dispatch(clearOrders());
         dispatch(logout());
     };
 
@@ -24,10 +27,18 @@ const AccountDropdown = () => {
                 id="account-dropdown"
                 title={<FiUser color="#fff" size={"1.5em"} />}
             >
-                <NavDropdown.Item>Edit info</NavDropdown.Item>
-                <NavDropdown.Item onClick={handleOpenModal}>
+                <div className="nav-dropdown-item">
+                    <Link
+                        className="d-block text-decoration-none text-dark w-100"
+                        to="/orders"
+                    >
+                        My orders
+                    </Link>
+                </div>
+
+                <div className="nav-dropdown-item" onClick={handleOpenModal}>
                     Logout
-                </NavDropdown.Item>
+                </div>
             </NavDropdown>
 
             {/* logout modal */}
