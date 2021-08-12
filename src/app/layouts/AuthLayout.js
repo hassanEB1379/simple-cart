@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Switch, Redirect } from "react-router-dom";
 import PublicRoutes from "../components/routes/PublicRoutes";
 
-import LoginForm from "../../features/auth/LoginForm";
+import LoginForm from "../../features/user/LoginForm";
 
 const AuthLayout = () => {
     return (
@@ -18,7 +18,7 @@ const AuthLayout = () => {
                                 component={LoginForm}
                             />
 
-                            <Redirect form={"/auth"} to={"/auth/login"} />
+                            <Redirect from="/auth" to="/auth/login" />
                         </Switch>
                     </Col>
                 </Row>
