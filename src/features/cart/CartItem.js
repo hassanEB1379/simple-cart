@@ -33,14 +33,14 @@ const CartItem = ({ data }) => {
                 <div>
                     <Card.Title>{data.title}</Card.Title>
 
-                    <Card.Text>
+                    <div>
                         count :
                         <Counter
                             count={data.count}
                             increment={increment}
                             decrement={decrement}
                         />
-                    </Card.Text>
+                    </div>
 
                     <Card.Text>
                         total price : {Math.floor(data.count * data.price)} $
