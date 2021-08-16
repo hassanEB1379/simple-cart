@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { getStateLs } from "../../utils/localStorage";
+import { getStateLs } from "../../app/utils/localStorage";
 
 const ordersSlice = createSlice({
     name: "orders",

@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { getStateLs } from "../../utils/localStorage";
+import { getStateLs } from "../../app/utils/localStorage";
 
 const initialState = getStateLs("cart") || [];
 
