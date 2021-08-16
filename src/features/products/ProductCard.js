@@ -48,7 +48,7 @@ const ProductCard = ({ data }) => {
                 />
 
                 <Button
-                    className="ms-3"
+                    className="w-100"
                     variant="primary"
                     onClick={handleAddToCart}
                 >
