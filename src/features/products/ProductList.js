@@ -4,22 +4,25 @@ import ProductCard from "./ProductCard";
 import ProductSidebar from "./ProductSidebar";
 
 import { useSelector } from "react-redux";
-import { fetchProducts, selectByCategory } from "./productSlice";
+import { fetchProducts, selectProductDataByCategory } from "./productSlice";
 import Fetch from "../../app/components/Fetch";
+import SelectedFilters from "../filter/SelectedFilters";
 
-const ProductList = ({ match }) => {
-    const { category } = match.params;
-
-    const { error, status, data } = useSelector(selectByCategory(category));
+const ProductList = () => {
+    const data = useSelector(selectProductDataByCategory);
+    const { error, status } = useSelector(state => state.products);
 
     return (
         <Row>
-            <Col className="" xs={1} lg={2}>
+            <Col style={{ zIndex: 2 }} className="d-none d-lg-block" xs={2}>
                 <ProductSidebar />
             </Col>
 
-            <Col xs={11} lg={10}>
-                <Row>
+            <Col lg={10} xs={12}>
+                {/* show selected filters top of product list */}
+                <SelectedFilters />
+
+                <Row className="mx-3">
                     {error && <Fetch error refetch={fetchProducts} />}
 
                     {status === "loading" && <Fetch />}
