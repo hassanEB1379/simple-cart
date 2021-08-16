@@ -42,20 +42,24 @@ const productSlice = createSlice({
 });
 
 // selectors
-export const selectByCategory = category => {
-    return createSelector(
-        state => state.products,
-        products => {
-            if (category === "all") return products;
+export const selectProductDataByCategory = createSelector(
+    state => state.products.data,
+    state => state.filter,
+    (products, filter) => {
+        const { priceRange, categories } = filter;
 
-            return {
-                ...products,
-                data: products.data.filter(
-                    product => product.category === category
-                ),
-            };
-        }
-    );
-};
+        const filterByCategory = product =>
+            categories.length
+                ? categories.indexOf(product.category) !== -1
+                : true;
+
+        return products.filter(
+            product =>
+                product.price >= Number(priceRange[0]) &&
+                product.price <= Number(priceRange[1]) &&
+                filterByCategory(product)
+        );
+    }
+);
 
 export default productSlice.reducer;
