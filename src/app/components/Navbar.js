@@ -33,7 +33,7 @@ const Navbar = () => {
                     <Nav.Item className="py-2">
                         <Link
                             className="text-white text-decoration-none"
-                            to="/all"
+                            to="/"
                         >
                             Home
                         </Link>
