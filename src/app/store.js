@@ -5,6 +5,7 @@ import productsReducer from "../features/products/productSlice";
 import cartReducer from "../features/cart/cartSlice";
 import userReducer from "../features/user/userSlice";
 import ordersReducer from "../features/orders/ordersSlice";
+import filterReducer from "../features/filter/filterSlice";
 
 export default configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
         cart: cartReducer,
         user: userReducer,
         orders: ordersReducer,
+        filter: filterReducer,
     },
 });
