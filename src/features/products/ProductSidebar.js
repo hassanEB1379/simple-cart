@@ -1,48 +1,31 @@
-import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import FilterByPrice from "../filter/FilterByPrice";
+import FilterByCategory from "../filter/FilterByCategory";
 
-import {
-    FaBoxes,
-    FaTshirt,
-    GiLargeDress,
-    GiPearlNecklace,
-    MdComputer,
-} from "react-icons/all";
+// style of range slider
+import "rc-slider/assets/index.css";
 
-const categories = [
-    { name: "all", icon: <FaBoxes size="1.5em" /> },
-    {
-        name: "electronics",
-        icon: <MdComputer size="1.5em" />,
-    },
-    {
-        name: "jewelery",
-        icon: <GiPearlNecklace size="1.5em" />,
-    },
-    {
-        name: "men's clothing",
-        icon: <FaTshirt size="1.5em" />,
-    },
-    {
-        name: "women's clothing",
-        icon: <GiLargeDress size="1.5em" />,
-    },
+export const categories = [
+    "electronics",
+    "jewelery",
+    "men's clothing",
+    "women's clothing",
 ];
 
 const ProductSidebar = () => {
     return (
-        <Nav style={{ top: 85 }} className="flex-column position-sticky">
-            {categories.map((category, index) => (
-                <Link
-                    key={index}
-                    to={category.name}
-                    className="d-flex gap-3 px-0 mb-4 align-items-center text-decoration-none fw-bold"
-                >
-                    {category.icon}
-                    <span className="d-none d-lg-block">{category.name}</span>
-                </Link>
-            ))}
-        </Nav>
+        <div style={{ top: 85 }} className="position-sticky">
+            <div className="position-relative">
+                <h3 className="mb-3">filters</h3>
+
+                <hr />
+
+                <FilterByCategory categories={categories} />
+
+                <hr />
+
+                <FilterByPrice />
+            </div>
+        </div>
     );
 };
 
