@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/simple-cart/static/css/main.1c5bdfba.chunk.css",
+    "main.js": "/simple-cart/static/js/main.294f188c.chunk.js",
+    "main.js.map": "/simple-cart/static/js/main.294f188c.chunk.js.map",
+    "runtime-main.js": "/simple-cart/static/js/runtime-main.ed8b2236.js",
+    "runtime-main.js.map": "/simple-cart/static/js/runtime-main.ed8b2236.js.map",
+    "static/css/2.6d440270.chunk.css": "/simple-cart/static/css/2.6d440270.chunk.css",
+    "static/js/2.bfc84f56.chunk.js": "/simple-cart/static/js/2.bfc84f56.chunk.js",
+    "static/js/2.bfc84f56.chunk.js.map": "/simple-cart/static/js/2.bfc84f56.chunk.js.map",
+    "index.html": "/simple-cart/index.html",
+    "static/css/2.6d440270.chunk.css.map": "/simple-cart/static/css/2.6d440270.chunk.css.map",
+    "static/css/main.1c5bdfba.chunk.css.map": "/simple-cart/static/css/main.1c5bdfba.chunk.css.map",
+    "static/js/2.bfc84f56.chunk.js.LICENSE.txt": "/simple-cart/static/js/2.bfc84f56.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed8b2236.js",
+    "static/css/2.6d440270.chunk.css",
+    "static/js/2.bfc84f56.chunk.js",
+    "static/css/main.1c5bdfba.chunk.css",
+    "static/js/main.294f188c.chunk.js"
+  ]
+}
