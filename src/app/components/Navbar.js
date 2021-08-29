@@ -29,7 +29,7 @@ const Navbar = () => {
             expand="sm"
         >
             <Container fluid="lg">
-                <Nav className="me-auto">
+                <Nav className="me-auto flex-row">
                     <Nav.Item className="py-2">
                         <Link
                             className="text-white text-decoration-none"
@@ -63,7 +63,12 @@ const Navbar = () => {
                         }
                         className="d-lg-none"
                     >
-                        <div style={{ width: 250 }} className="p-3">
+                        <div
+                            style={{
+                                width: 250,
+                            }}
+                            className="p-3"
+                        >
                             <FilterByCategory categories={categories} />
                             <hr />
                             <FilterByPrice />
